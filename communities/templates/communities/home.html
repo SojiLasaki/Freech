@@ -1,73 +1,23 @@
 {% extends 'main.html' %}
+
 {% load static %}
 {% block content %}
-<style>
-
-</style>
-{% comment %} 
-<script>
-    const flashcards = {{ serialized_flashcards | safe }};
-</script>
-<script type="text/javascript" src={% static 'js/main.js' %}></script> {% endcomment %}
 
 
-<!-- This is a template that includes Remix Icons in the pen settings. -->
 <br>
-<div class="heading-container">
-    {% comment %} <div class="icon-container">
-        <a href="{% url 'home' %}" style="color:white"><i class="ri-arrow-drop-left-line"></i></a>
-    </div> {% endcomment %}
-    <h1>All Communities </h1>
-</div>
+<br>
+<br>
+<h1>Welcome to Freech</h1>
+<br>
 
-<div class="container h-100">
-    <div class="d-flex justify-content-center h-100">
-      <div class="search">
-        <input class="search_input" type="text" name="" placeholder="Search here...">
-        <a href="#" class="search_icon"><i class="fa fa-search"></i></a>
-      </div>
-    </div>
-  </div>
+<span>Join a community and enjoy diverse convos</span>
+{% if user.is_authenticated %}
+<p>WHere freedom of speech is appreciated</p>
 
-  
-{% comment %} <h3><span style="color:#fff; font-size:15px">Deck - {{deck.title}} | </span><a href="{% url 'update_deck' deck.id %}?next={{request.path}}" style="color:#707070; font-size:15px">Edit - </a><a href="{% url 'delete_deck' deck.id %}?next={{request.path}}" style="color:#707070; font-size:15px">Delete</a></h3> {% endcomment %}
-
-{% if communities %}
-    <div class="note_head">
-        <br>
-        <strong class="link" ><a style="color:white;" href="{% url 'create_community' %}?next={{request.path}}">Create new community</a></strong>
-        <br>
-        <h5 style="color:#707070">{{communities.count}} Community{{communities.count|pluralize:"s"}}</h5>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8">
-                <div class="media g-mb-30 media-comment">
-
-                    <!-- Code for single cards and answers -->
-                    {% for community in communities %}
-                            <div class="media-body u-shadow-v18 g-bg-secondary g-pa-30">
-                                <div class="g-mb-15">
-                                    <h4 class="h5 g-color-gray-dark-v1 mb-0">{{community.name}}</h4>
-                                    <br>
-                                    <h6>{{community.descirption}}</h6> 
-                                    <span class="g-color-gray-dark-v4 g-font-size-12">{{community.created}}</span>
-                                    {% comment %} <p>{{serialized_flashcards}}</p> {% endcomment %}
-                                    <br>
-                                </div>
-                            </div>
-                        <br>
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
-    </div>
-{% comment %} {% else %}
-    <strong class="link" style=""><a style="color:white;" href="{% url 'create_flashcard' deck_id=deck.id %}?next={{request.path}}">Create new community</a></strong>
-    <p style="color:grey">You have no community created </P> {% endcomment %}
-
+{% else %}
+<p>WHhre freedom of speech is appreciated</p>
+<br>
+<br>
+Sign up now to be involved</p>
 {% endif %}
-
-{% comment %} {% url 'single-deck' deck.id %} {% endcomment %}
-
 {% endblock content %}

@@ -14,9 +14,9 @@ def communities(request):
     return render(request, "communities/home.html", context)
 
 
-def create_community(request):
+def request_community(request):
     context = {}
-    return render(request, "communities/home.html", context)
+    return render(request, "communities/form.html", context)
 
 
 def circles(request):
