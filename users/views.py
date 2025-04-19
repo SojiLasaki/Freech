@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 # Create your views here.
 
@@ -10,3 +10,7 @@ def profile(request):
 def loginUser(request):
     context = {}
     return render(request, "users/login_register.html", context)
+
+def logoutUser(request):
+    logout(request)
+    return redirect('login')

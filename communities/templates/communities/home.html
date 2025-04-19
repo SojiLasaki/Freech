@@ -32,8 +32,9 @@
   
 {% comment %} <h3><span style="color:#fff; font-size:15px">Deck - {{deck.title}} | </span><a href="{% url 'update_deck' deck.id %}?next={{request.path}}" style="color:#707070; font-size:15px">Edit - </a><a href="{% url 'delete_deck' deck.id %}?next={{request.path}}" style="color:#707070; font-size:15px">Delete</a></h3> {% endcomment %}
 
-{% if community %}
+{% if communities %}
     <div class="note_head">
+        <br>
         <strong class="link" ><a style="color:white;" href="{% url 'create_community' %}?next={{request.path}}">Create new community</a></strong>
         <br>
         <h5 style="color:#707070">{{communities.count}} Community{{communities.count|pluralize:"s"}}</h5>
@@ -43,49 +44,20 @@
             <div class="col-md-8">
                 <div class="media g-mb-30 media-comment">
 
-                    <!-- Code for all the communities -->
-                    <section class="content-area">
-                        <article class="community" id="community">
-                            {% comment %} <header class="flashcard-header" id={props.id}>
-                                <h2>Some Data</h2>
-                            </header> {% endcomment %}
-                            <section class="main-content">
-                                <div class="text-container">
-                                    <div class="text" onclick="toggleText()">
-                                        <p class="term"></p>
-                                        <p class="definition hidden"></p>
-                                    </div>
-                                    <span class="num">
-                                        <span id="currentNum"></span> of <span id="totalNum"></span>
-                                    </span>
-                                </div>
-                                <div class="btn2-container">
-                                    <button class="btn2 dk-btn2" onclick="handlePrevious()"> < </button>
-                                    <button id="viewAnswerBtn" class="btn2 dk-btn2" onclick="handleViewAnswer()">View Answer</button>
-                                    <button class="btn2 dk-btn2" onClick="handleNext()"> > </button>
-                                </div>
-                            </section>
-                        </article>
-                    </section>
-
                     <!-- Code for single cards and answers -->
-                    <br>
-                    <h4>Lists</h4>
-                    <br>
-                    {% comment %} {% for community in communities %}
+                    {% for community in communities %}
                             <div class="media-body u-shadow-v18 g-bg-secondary g-pa-30">
                                 <div class="g-mb-15">
-                                    <h4 class="h5 g-color-gray-dark-v1 mb-0">{{flashcard.question}}</h4>
-                                    <h5><a href="{% url 'update_flashcard' flashcard.id %}" style="color:#707070; font-size:15px">Edit - </a><a href="{% url 'delete_flashcard' flashcard.id %}?next={{request.path}}" style="color:#707070; font-size:15px">Delete</a></h5>
+                                    <h4 class="h5 g-color-gray-dark-v1 mb-0">{{community.name}}</h4>
                                     <br>
-                                    <h6>{{flashcard.answer}}</h6> 
-                                    <span class="g-color-gray-dark-v4 g-font-size-12">{{community.created}}</span> {% endcomment %}
+                                    <h6>{{community.descirption}}</h6> 
+                                    <span class="g-color-gray-dark-v4 g-font-size-12">{{community.created}}</span>
                                     {% comment %} <p>{{serialized_flashcards}}</p> {% endcomment %}
-                                    {% comment %} <br>
+                                    <br>
                                 </div>
                             </div>
                         <br>
-                    {% endfor %} {% endcomment %}
+                    {% endfor %}
                 </div>
             </div>
         </div>
