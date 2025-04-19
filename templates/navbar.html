@@ -3,12 +3,12 @@
 <!-- Remember to add *** target="_blank" rel="noreferrer" *** to external links. This is omitted below for demo purposes only. -->
 <header>
     <nav class="top-nav" id="top-nav">
-        <a class="logo" href="{% url 'home' %}">Studiar</a>
+        <a class="logo" href="{% url 'home' %}">Freech</a>
         <div class="lists-container" id="lists-container">
             <ul class="link-list" id="link-list">
                 <li><a href="{% url 'home' %}" onclick="toggleMenu()">Home</a></li>
-                <li><a href="{% url 'decks' %}" onclick="toggleMenu()">Decks</a></li>
-                <li><a href="{% url 'folders' %}" onclick="toggleMenu()">Folders</a></li>
+                <li><a href="{% url 'communities' %}" onclick="toggleMenu()">Decks</a></li>
+                <li><a href="{% url 'circles' %}" onclick="toggleMenu()">Folders</a></li>
                 {% comment %} <li><a href="{% url 'sessions' %}" onclick="toggleMenu()">Sessions</a></li> {% endcomment %}
                 {% if user.is_authenticated %}
                     <li><a href="{% url 'profile' %}" onclick="toggleMenu()">Profile</a></li>

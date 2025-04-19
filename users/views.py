@@ -5,3 +5,8 @@ from django.shortcuts import render
 def profile(request):
     context = {}
     return render(request, "users/profile.html", context)
+
+
+def loginUser(request):
+    context = {}
+    return render(request, "users/login_register.html", context)

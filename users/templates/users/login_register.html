@@ -1,0 +1,53 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+{% if page == "login" %}
+
+<div class="wrapper">
+    <h3 class="register">Login</h3>
+    <br>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="input-box">
+            <input type="text" name='username' placeholder="Enter your username or email" required>
+        </div>
+        <div class="input-box">
+            <input type="password" name='password' placeholder="Enter password" required>
+        </div>
+        <div class="input-box button">
+            <input type="Submit" value="Login">
+        </div>
+        <div class="text">
+            <span style="font-size: 15px; margib: 0; algin-items: center; color:black;">Don't have an account? <a href="{% url 'register' %}" style="color:blue">Register</a></span>
+        </div>
+    </form>
+</div>
+
+{% else %}
+
+<div class="wrapper">
+    <h3 class="register">Register</h3>
+    <br>
+    
+    <form action="" method="POST">
+        {% csrf_token %}
+        
+        {% for field in form %}
+        <div class="input-box">
+            {{ field }}
+            <span style="font-size:11px; color:red">{{field.help_text}}</span>
+        </div>
+        {% endfor %}
+
+        <div class="input-box button">
+            <input type="Submit" value="Register">
+        </div>
+        <div class="text">
+            <span style="font-size: 15px; color:black;">Already have an account? <a href="{% url 'login' %}" style="color:blue">Login</a></span>
+        </div>
+    </form>
+</div>
+{% endif %}
+
+{% endblock content %}
