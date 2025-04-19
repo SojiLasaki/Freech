@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css" integrity="sha512-OQDNdI5rpnZ0BRhhJc+btbbtnxaj+LdQFeh0V9/igiEPDiWE2fG+ZsXl0JEH+bjXKPJ3zcXqNyP4/F/NegVdZg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>StudyBud</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-RQVOULy0OPwsjpJZRr5J4+weI1cJYTc+8xhg5ZG9WqlMimcP1Ltpw38bW91L5yfX+NBUz66FfOv5bj5TuQG28g==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="{% static 'styles/appa.css' %}" />
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}" />
+
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <main>
+
+        {% if messages %}
+
+            {% for message in messages %}
+                <br>
+                <br>
+                <div class="container">
+                    <div class="alert-simple alert-danger">
+                        <i class="start-icon far fa-times-circle faa-pulse animated"></i>
+                        <strong class="font__weight-semibold">{{message}}</strong>
+                    </div>
+                </div>
+            {% endfor %}
+
+
+    {% endif %}
+    {% block content %}
+
+    {% endblock content %}
+    </main>
+    {% include 'footer.html'%}
+</body>
+<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+</html>

@@ -1,2 +1,0 @@
-# Freech
-Hackathon Project

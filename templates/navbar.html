@@ -1,0 +1,69 @@
+{% load static %}
+<!-- TOP NAV -->
+<!-- Remember to add *** target="_blank" rel="noreferrer" *** to external links. This is omitted below for demo purposes only. -->
+<header>
+    <nav class="top-nav" id="top-nav">
+        <a class="logo" href="{% url 'home' %}">Studiar</a>
+        <div class="lists-container" id="lists-container">
+            <ul class="link-list" id="link-list">
+                <li><a href="{% url 'home' %}" onclick="toggleMenu()">Home</a></li>
+                <li><a href="{% url 'decks' %}" onclick="toggleMenu()">Decks</a></li>
+                <li><a href="{% url 'folders' %}" onclick="toggleMenu()">Folders</a></li>
+                {% comment %} <li><a href="{% url 'sessions' %}" onclick="toggleMenu()">Sessions</a></li> {% endcomment %}
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'profile' %}" onclick="toggleMenu()">Profile</a></li>
+                    <li><a href="{% url 'logout' %}" onclick="toggleMenu()">Logout</a></li>
+                {%else %}
+                    <li><a href="{% url 'login' %}" onclick="toggleMenu()">Login</a></li>
+                {% endif %}
+
+            </ul>
+        </div>
+        <button class="btn menu-btn" id="menu-btn"><i class="ri-menu-line"></i></button>
+        <button class="btn close-btn" id="close-btn"><i class="ri-close-fill"></i></button>
+    </nav>
+</header>
+<!-- END TOP NAV -->
+
+<script>
+    window.addEventListener('scroll', function() {
+        var topNav = document.getElementById('top-nav');
+        var scrollPosition = window.scrollY;
+
+        if (scrollPosition > 0) {
+            topNav.classList.add('scrolled');
+        } else {
+            topNav.classList.remove('scrolled');
+        }
+    }); 
+
+    window.addEventListener('scroll', function() {
+        var topNav = document.getElementById('top-nav');
+        var scrollPosition = window.scrollY;
+
+        if (scrollPosition > 0) {
+            topNav.classList.add('scrolled');
+        } else {
+            topNav.classList.remove('scrolled');
+        }
+    });
+
+    function toggleMenu() {
+        var listsContainer = document.getElementById('lists-container');
+        listsContainer.classList.toggle('slide-out');
+    }
+
+    // Add event listener to detect clicks anywhere on the document
+    document.addEventListener('click', function(event) {
+        var menuBtn = document.getElementById('menu-btn');
+        var closeBtn = document.getElementById('close-btn');
+        var listsContainer = document.getElementById('lists-container');
+        var isClickInsideMenuBtn = menuBtn.contains(event.target);
+        var isClickInsideCloseBtn = closeBtn.contains(event.target);
+        var isClickInsideMenu = listsContainer.contains(event.target);
+
+        if (!isClickInsideMenu && !isClickInsideMenuBtn && !isClickInsideCloseBtn && listsContainer.classList.contains('slide-out')) {
+            listsContainer.classList.remove('slide-out');
+        }
+    });
+</script>

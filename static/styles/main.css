@@ -1,0 +1,194 @@
+.heading-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    min-width: 40px;
+    font-size: 24px; /* Adjust font size as needed */
+    background: #333;
+    border-radius: 50%;
+    line-height: 40px; /* Vertical alignment adjustment */
+}
+
+::placeholder {
+    /* Set the font size to match the input text */
+    font-size: 16px; /* Adjust the font size as needed */
+}
+
+.wide-textarea::placeholder {
+    /* Set the font size for placeholder text */
+    font-size: 16px; /* Adjust the font size as needed */
+}
+
+/* Style for the font type of text entered into the textarea within .wide-textarea */
+.wide-textarea textarea {
+    /* Set the font family to match the placeholder text */
+    padding: 15px;
+    font-family: inherit;
+}
+
+
+/* css code for flashcard components */
+  .btn2 {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-family: inherit;
+    color: inherit;
+    width: fit-content;
+    cursor: pointer;
+  }
+  .btn2 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--neutral-lt);
+    background: var(--neutral-dk);
+    padding: 8px 16px;
+    border-radius: var(--button-border-radius);
+  }
+  .btn2:hover {
+    opacity: 70%;
+    /* color: var(--neutral-dk);
+    background: var(--brand-3); */
+    transform: none;
+  }
+  .btn2-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 4rem;
+  }
+  
+  /* STRUCTURE & POSITIONING */
+  /* used in pages to create uniformly responsive areas */
+  .content-area {
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+    /* padding: 6rem 2rem; */
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  @media screen and (min-width: 750px) {
+    /* .content-area {
+      padding: 6rem 4rem 7rem 4rem;
+    } */
+  }
+  
+  /* FLASHCARD */
+  .flashcard {
+    width: 100%;
+    /* max-width: 600px; */
+    border-radius: 3px;
+    color: var(--neutral-dk);
+    margin: 0 auto;
+  }
+  .flashcard-header {
+    color: var(--neutral-lt);
+    width: fit-content;
+    font-size: 0.8rem;
+    letter-spacing: 1.5px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  .main-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    width: 100%;
+    padding: 4rem 2rem;
+    background: var(--neutral-lt);
+    box-shadow: var(--card-box-shadow);
+  }
+  .text-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    min-height: 250px;
+  }
+  .text-container p {
+    margin: 0;
+  }
+  .term {
+    font-size: 3.4rem;
+    font-weight: 500;
+    padding-bottom: 2rem;
+    color: black
+  }
+  .definition {
+    font-size: 1.6rem;
+    color: black;
+  }
+  .num {
+    position: absolute;
+    bottom: 0;
+    font-size: 1.4rem;
+  }
+  .num span {
+    font-weight: 500;
+  }
+  .hidden {
+    display: none;
+  }
+  
+  @media screen and (min-width: 750px) {
+    .main-content {
+      padding: 4rem;
+    }
+    .term {
+      font-size: 3.6rem;
+    }
+    .definition {
+      font-size: 1.8rem;
+    }
+    .num {
+      font-size: 1.6rem;
+    }
+
+  }
+  
+  /* message banner */
+
+  .alert-simple.alert-danger
+  {
+    border: 1px solid rgba(241, 6, 6, 0.81);
+      background-color: rgba(220, 17, 1, 0.16);
+      box-shadow: 0px 0px 2px #ff0303;
+      color: #ff0303;
+      text-shadow: 2px 1px #00040a;
+    transition:0.5s;
+    cursor:pointer;
+    text-align: center;
+    padding: 2% 0;
+    max-width: 100%;
+    margin: auto
+  }
+  
+  .alert-danger:hover
+  {
+    background-color: rgba(220, 17, 1, 0.33);
+    transition:0.5s;
+  }
+  
+  .danger
+  {
+      font-size: 18px;
+      color: #ff0303;
+      text-shadow: none;
+  }
+
+
+

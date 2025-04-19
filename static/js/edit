@@ -1,0 +1,73 @@
+// Define an empty array to hold the flashcard data fetched from Django
+let flashcards = [];
+
+// Function to fetch flashcard data from Django
+function fetchFlashcards(deckId) {
+    // Make an AJAX request to fetch flashcard data
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", `single_deck/${deckId}/`, true); // Include the deckId in the URL
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            // Parse the JSON response
+            const responseData = JSON.parse(xhr.responseText);
+            // Assign the fetched flashcards to the global variable
+            flashcards = responseData.flashcards;
+            // Initialize by displaying the first flashcard when the page loads
+            initializeFlashcard();
+        }
+    };
+    xhr.send();
+}
+
+// Call the fetchFlashcards function to fetch flashcard data from Django
+const deckId = {deck_id}; // Replace 'your-deck-id' with the actual deck ID dynamically fetched from your Django template
+fetchFlashcards(deckId);
+
+// Rest of your JavaScript code remains unchanged
+let currentIndex = 0; // Index to keep track of the current flashcard
+
+// Function to toggle between displaying term and definition
+function toggleText() {
+    const termElement = document.querySelector(".question");
+    const definitionElement = document.querySelector(".answer");
+
+    termElement.classList.toggle("hidden");
+    definitionElement.classList.toggle("hidden");
+}
+
+// Function to initialize the flashcard with the first term
+function initializeFlashcard() {
+    currentIndex = 0; // Set currentIndex to 0 to start with the first term
+    displayFlashcard();
+}
+
+// Function to display a new random flashcard
+function handleNew() {
+    currentIndex = Math.floor(Math.random() * flashcards.length);
+    displayFlashcard();
+}
+
+// Function to display the next flashcard
+function handleNext() {
+    currentIndex = (currentIndex + 1) % flashcards.length;
+    displayFlashcard();
+}
+
+// Function to display the previous flashcard
+function handlePrevious() {
+    currentIndex = (currentIndex - 1 + flashcards.length) % flashcards.length;
+    displayFlashcard();
+}
+
+// Function to display the current flashcard
+function displayFlashcard() {
+    const flashcard = document.getElementById("flashcard");
+    const currentNumElement = flashcard.querySelector(".num span:first-child");
+    const termElement = flashcard.querySelector(".term");
+    const definitionElement = flashcard.querySelector(".definition");
+
+    termElement.textContent = flashcards[currentIndex].term;
+    definitionElement.textContent = flashcards[currentIndex].def;
+    currentNumElement.textContent = currentIndex + 1;
+    document.getElementById("totalNum").textContent = flashcards.length;
+}

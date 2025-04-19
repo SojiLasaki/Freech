@@ -1,0 +1,108 @@
+@media screen and (max-width: 750px) {
+  .top-nav {
+      justify-content: flex-start;
+      padding: 0 20px;
+  }
+  .menu-btn {
+      display: block;
+  }
+  .logo {
+      margin-right: auto;   
+  }
+  .lists-container {
+      position: absolute;
+      top: var(--nav-height);
+      right: 0;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: calc(100vh - var(--nav-height));
+      width: 0;
+      opacity: 0;
+      /* background: var(--neutral-md); */
+      /*----soji----*/
+
+      background: #00000078; /* Change this to the desired background color */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow or any other styles */
+      backdrop-filter: blur(10px); /* Add blur effect */
+      overflow: hidden;
+  }
+  .link-list {
+      flex-direction: column;
+      gap: 30px;
+      max-width: fit-content;
+      opacity: 1;
+  }
+  .link-list a {
+      color: var(--neutral-lt);
+      font-size: 2.4rem;
+      letter-spacing: 1.2px;
+  }
+  .social-list i {
+      font-size: 3rem;
+  }
+  .visible {
+      display: block;
+      
+  }
+  .hidden {
+      display: none;
+  }
+  .open { 
+      width: 100%;
+      opacity: initial;
+      
+  }
+}
+
+
+@media screen and (max-width: 750px) {
+    .top-nav {
+        justify-content: flex-start;
+        padding: 0 20px;
+    }
+    .menu-btn {
+        display: block;
+    }
+    .logo {
+        margin-right: auto;   
+    }
+    .lists-container {
+        position: absolute;
+        top: var(--nav-height);
+        right: 0;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: calc(100vh - var(--nav-height));
+        width: 0;
+        opacity: 0;
+        background: var(--neutral-dk);
+        overflow: hidden;
+    }
+    .link-list {
+        flex-direction: column;
+        gap: 30px;
+        max-width: fit-content;
+        opacity: 1;
+    }
+    .link-list a {
+        color: var(--neutral-lt);
+        font-size: 2.4rem;
+        letter-spacing: 1.2px;
+    }
+  
+    .social-list i {
+        font-size: 3rem;
+    }
+    .visible {
+        display: block;
+    }
+    .hidden {
+        display: none;
+    }
+    .open { 
+        width: 100%;
+        opacity: initial;
+    }
+  }
