@@ -7,7 +7,7 @@
         <div class="lists-container" id="lists-container">
             <ul class="link-list" id="link-list">
                 <li><a href="{% url 'home' %}" onclick="toggleMenu()">Home</a></li>
-                <li><a href="{% url 'communities' %}" onclick="toggleMenu()">Communities</a></li>
+                <li><a href="{% url 'community' %}" onclick="toggleMenu()">Communitiy</a></li>
                 <li><a href="{% url 'circles' %}" onclick="toggleMenu()">Circles</a></li>
                 {% comment %} <li><a href="{% url 'sessions' %}" onclick="toggleMenu()">Sessions</a></li> {% endcomment %}
                 {% if user.is_authenticated %}

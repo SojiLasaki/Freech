@@ -1,0 +1,39 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<style>
+
+</style>
+
+<br>
+<div class="heading-container">
+    <h1>Welcome to {{community.name}}</h1>
+</div>
+
+
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <!-- Post Card with Border -->
+        <div class="card border border-primary">
+          <div class="card-header">
+            <h5 class="card-title">Post Title</h5>
+            <small class="text-muted">by John Doe | April 19, 2025</small>
+          </div>
+          <div class="card-body">
+            <p class="card-text">
+              This is a simple text post. It can contain any text, such as a blog entry, message, or news article. 
+              You can style it, add images, and make it as simple or complex as needed.
+            </p>
+          </div>
+          <div class="card-footer text-muted">
+            <button class="btn btn-outline-primary">Like</button>
+            <button class="btn btn-outline-secondary">Comment</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+{% endblock content %}
