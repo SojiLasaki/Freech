@@ -39,12 +39,18 @@ def request_community(request):
 
 def circles(request):
     profile = request.user.profile
-    community = profile.community
+    circles = Circle.objects.all()
+    # my_circles = 
 
-    if not community:
-        return redirect('communities')
+    if not circles:
+        return redirect('circles')
     
-    context = {'community':community}
+    context = {'circles':circles}
     return render(request, "communities/circles.html", context)
 
 
+def circle(request, pk):
+    profile = request.user.profile
+    circle = Circle.objects_set.get(id=pk)
+    context = {"circle":circle}
+    return render(request, communities/circle.html), context

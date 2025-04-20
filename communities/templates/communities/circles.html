@@ -17,7 +17,7 @@
     {% comment %} <div class="icon-container">
         <a href="{% url 'home' %}" style="color:white"><i class="ri-arrow-drop-left-line"></i></a>
     </div> {% endcomment %}
-    <h1>All circles </h1>
+    <h1>All Circles </h1>
 </div>
 
 <div class="container h-100">
@@ -35,9 +35,9 @@
 {% if circles %}
     <div class="note_head">
         <br>
-        <strong class="link" ><a style="color:white;" href="{% url 'request_circle' %}?next={{request.path}}">Request new circle</a></strong>
+        {% comment %} <strong class="link" ><a style="color:white;" href="{% url 'request_circle' %}?next={{request.path}}">Request new circle</a></strong> {% endcomment %}
         <br>
-        <h5 style="color:#707070">{{ circles.count }} Communit{% if circles.count != 1 %}es {% else %} y{% endif %}</h5>
+        <h5 style="color:#707070">{{ circles.count }} Circle{% if circle.count != 1 %}s {% else %} {% endif %}</h5>
     </div>
     <div class="container">
         <div class="row">

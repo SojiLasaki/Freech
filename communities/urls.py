@@ -7,4 +7,5 @@ urlpatterns = [
     path('community', views.community, name = "community"),
     path('request_community/', views.request_community, name="request_community"),
     path('circles/', views.circles, name = "circles"),
+    path('circle/<str:pk>/', views.circle, name="circle"),
 ]
