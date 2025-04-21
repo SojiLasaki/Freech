@@ -4,3 +4,5 @@ from .models import *
 
 admin.site.register(Community)
 admin.site.register(Circle)
+admin.site.register(Convo)
+admin.site.register(Reply)

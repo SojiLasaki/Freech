@@ -1,48 +1,57 @@
 {% extends 'main.html' %}
 {% load static %}
 {% block content %}
-<style>
-
-</style>
 
 <br>
 <div class="heading-container">
-    <h1>Welcome to {{community.name}}</h1>
-</div>
-<h3>Posts</h3>
-<br>
-<hr style="border: 1px solid white;">
-<br>
+    {% comment %} <div class="icon-container">
+        <a href="{% url 'home' %}" style="color:white"><i class="ri-arrow-drop-left-line"></i></a>
+    </div> {% endcomment %}
+    <h1>Welcome to {{object.name}}</h1>
+    </div>
 
-<div class="container mt-5">
-    <div class="row justify-content-center">
-      <div class="col-md-8">
-        <!-- Post Card with Border -->
-        <div class="card border border-primary">
-          <div class="card-header">
-            <h5 class="card-title">Post Title</h5>
-            <small class="text-muted">by John Doe | April 19, 2025</small>
-          </div>
-          
-          <div class="card-body">
-            <p class="card-text">
-              This is a simple text post. It can contain any text, such as a blog entry, message, or news article. 
-              You can style it, add images, and make it as simple or complex as needed.
-            </p>
-            <hr style="border: 1px solid white;">
-          </div>
-  
-          <!-- Moved card-footer here -->
-          <div class="card-footer bg-light">
-            <a href="#" class="btn btn-outline-primary me-2">Like</a>
-            <a href="#" class="btn btn-outline-secondary">Comment</a>
-          </div>
-  
-        </div>
+<div class="container h-100">
+    <div class="d-flex justify-content-center h-100">
+      <div class="search">
+        <input class="search_input" type="text" name="" placeholder="Search here...">
+        <a href="#" class="search_icon"><i class="fa fa-search"></i></a>
       </div>
     </div>
   </div>
-  
-  
+
+    {% if convos %}
+        <div class="note_head">
+            <br>
+            {% comment %} <strong class="link" ><a style="color:white;" href="{% url 'request_convo' %}?next={{request.path}}">Request new convo</a></strong> {% endcomment %}
+            <br>
+            <h5 style="color:#707070">{{ convos.count }} Convo{% if convo.count > 1 %}s {% else %} {% endif %}</h5>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="media g-mb-30 media-comment">
+
+                        <!-- Code for single cards and answers -->
+                        {% for convo in convos %}
+                            <a href="{% url 'convo' convo.id %}" style="color:white;">
+                                <div class="media-body u-shadow-v18 g-bg-secondary g-pa-30">
+                                    <div class="g-mb-15">
+                                        <h4 class="h5 g-color-gray-dark-v1 mb-0">{{convo.title}}</h4>
+                                        <br>
+                                        <h6>{{convo.descirption}}</h6> 
+                                        <span class="g-color-gray-dark-v4 g-font-size-12">{{convo.created}}</span>
+                                        {% comment %} <p>{{serialized_flashcards}}</p> {% endcomment %}
+                                        <br>
+                                    </div>
+                                </div>
+                            </a>
+                            <br>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% comment %} {% url 'single-deck' deck.id %} {% endcomment %}
 
 {% endblock content %}

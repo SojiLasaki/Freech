@@ -22,13 +22,15 @@ def communities(request):
 
 
 def community(request):
+    page = "community"
     profile = request.user.profile
     community = profile.community
+    convos = community.convo_set.all()
     
     if not community:
         return redirect('communities')
     
-    context = {'community':community}
+    context = {'object':community, 'convos':convos, 'page':page}
     return render(request, "communities/community.html", context)
 
 
@@ -39,7 +41,7 @@ def request_community(request):
 
 def circles(request):
     profile = request.user.profile
-    circles = Circle.objects.all()
+    circles = profile.circle_set.all()
     # my_circles = 
 
     if not circles:
@@ -50,7 +52,18 @@ def circles(request):
 
 
 def circle(request, pk):
+    page = "circle"
+    circle = Circle.objects.get(id=pk)
+    convos = circle.convo_set.all()
+    
+    if not community:
+        return redirect('circl')
+    
+    context = {'object':circle, 'convos':convos, 'page':page}
+    return render(request, "communities/community.html", context)
+
+def convo(request, pk):
     profile = request.user.profile
-    circle = Circle.objects_set.get(id=pk)
-    context = {"circle":circle}
-    return render(request, communities/circle.html), context
+    convo = Convo.objects.get(id=pk)
+    context = {"convo":convo}
+    return render(request, "communities/convo.html", context)
