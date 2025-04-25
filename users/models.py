@@ -9,7 +9,7 @@ class Profile(models.Model):
     email = models.EmailField(max_length=500)
     username = models.CharField(max_length=200)
     community = models.OneToOneField("communities.Community", on_delete=models.SET_NULL, null=True, blank=True, related_name="members")
-    bio = models.TextField(blank=True)
+    # bio = models.TextField(blank=True)
     id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True, primary_key=True)
     created = models.DateTimeField(auto_now_add=True)
 

@@ -26,6 +26,7 @@ class Circle(models.Model):
     description = models.TextField(blank=True)
     # convo = models.ManyToManyField("Convo")
     members = models.ManyToManyField("users.Profile", related_name="circles")  #
+    # is_public = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
@@ -61,3 +62,6 @@ class Reply(models.Model):
     
     class Meta:
         verbose_name_plural = "Replies"
+
+
+# class RequestForm(models.Model):

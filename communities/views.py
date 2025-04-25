@@ -60,10 +60,36 @@ def circle(request, pk):
         return redirect('circl')
     
     context = {'object':circle, 'convos':convos, 'page':page}
-    return render(request, "communities/community.html", context)
+    return render(request, "communities/circle.html", context)
 
 def convo(request, pk):
     profile = request.user.profile
     convo = Convo.objects.get(id=pk)
-    context = {"convo":convo}
+    community = convo.community
+    replies = convo.reply_set.all()
+    context = {"convo":convo, 'replies':replies, 'community':community}
     return render(request, "communities/convo.html", context)
+
+
+def circle_convo(request, pk):
+    profile = request.user.profile
+    convo = Convo.objects.get(id=pk)
+    circle = convo.circle
+    replies = convo.reply_set.all()
+    context = {"convo":convo, 'replies':replies, "circle":circle}
+    return render(request, "communities/convo_circle.html", context)
+
+
+def create_circle(request):
+    context = {}
+    return render(request, "communities/form.html", context)
+
+
+def create_reply(request):
+    context = {}
+    return render(request, "communities/form.html", context)
+
+
+def create_convo(request):
+    context = {}
+    return render(request, "communities/form.html", context)

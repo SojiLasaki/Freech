@@ -6,11 +6,18 @@
 <br>
 <div class="heading-container">
     <div class="icon-container">
-        <a href="{% url 'community' %}" style="color:white"><i class="ri-arrow-drop-left-line"></i></a>
+        <a href="{% url 'circle' circle.id%}" style="color:white"><i class="ri-arrow-drop-left-line"></i></a>
     </div>
-    <h1>{{community.name}}</h1> -- <h6>Community</h6>
+    <h1>{{circle.name}}</h1> -- <h6>Circle</h6>
     </div>
 
+
+{% if replies %}
+    <div class="note_head">
+        <br>
+        {% comment %} <strong class="link" ><a style="color:white;" href="{% url 'request_reply' %}?next={{request.path}}">Request new reply</a></strong> {% endcomment %}
+        <br>
+    </div>
     <div class="container">
         <div class="row">
             <div class="col-md-8">
@@ -19,18 +26,19 @@
                         <h4>{{convo.title}}</h4>
                         <h6 class="g-color-gray-dark-v4 g-font-size-12">{{ convo.created|date:"M d, Y H:i" }}</h6>
                         <p class="p g-color-gray-dark-v1 mb-1">{{ convo.body }}</p>
+                        <hr style="border: 2px solid white; margin-top: 10px;">
                     </div>                    
                     <br>
-                    {% if replies %}
                     <h5>Replies</h5>
                     <h5 style="color:#707070">{{ replies.count }} reply{% if reply.count != 1 %}s {% else %} {% endif %}</h5>
-
+                    <br>
+                    <a href="{% url "create_reply" %}">Reply</a>
                     <!-- Code for single cards and answers -->
                     {% for reply in replies %}
                         <div class="g-mb-">
                             <h6 class="g-color-gray-dark-v4 g-font-size-12">{{ reply.created|date:"M d, Y H:i" }}</h6>
                             <p class="p g-color-gray-dark-v1 mb-1">{{ reply.body }}</p>
-                            <hr style="border: 1px solid white; margin-top: 10px;">
+                            <hr style="border: 0.5px solid white; margin-top: 10px;">
                         </div>                    
                         <br>
                     {% endfor %}
